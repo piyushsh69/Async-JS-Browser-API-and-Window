@@ -1,0 +1,43 @@
+localStorage and sessionStorage: Client-Side Data Persistence
+
+Purpose: These APIs offer mechanisms to store data on the client-side (user's browser) for persistence across page loads or browser sessions. This empowers web applications to retain user preferences, maintain application state, and enhance the overall user experience.
+Usage:
+
+Both localStorage and sessionStorage provide similar methods for interacting with data:
+
+setItem(key, value): Stores a key-value pair. The key is a string, and the value can be any data type that can be coerced into a string (e.g., numbers, booleans, JSON-serialized objects).
+getItem(key): Retrieves the value associated with a given key. Returns null if the key doesn't exist.
+removeItem(key): Removes the key-value pair identified by the key.
+clear(): Clears the entire localStorage or sessionStorage area.
+Examples:
+
+1. localStorage: Remembering User Preferences (Theme):
+// Persist user's preferred theme setting
+function setTheme(theme) {
+  localStorage.setItem('theme', theme);
+}
+
+// Retrieve the theme on page load and apply it
+function getTheme() {
+  const theme = localStorage.getItem('theme');
+  if (theme) {
+    document.body.classList.add(theme);
+  }
+}
+
+getTheme(); // Apply theme on initial load
+2. sessionStorage: Shopping Cart Items:
+// Add an item to the shopping cart (stored in sessionStorage)
+function addToCart(itemId) {
+  const cartItems = JSON.parse(sessionStorage.getItem('cartItems') || '[]');
+  cartItems.push(itemId);
+  sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+}
+
+// Retrieve cart items from sessionStorage and display them
+function getCartItems() {
+  const cartItems = JSON.parse(sessionStorage.getItem('cartItems') || '[]');
+  // Update UI to display cart items
+}
+
+getCartItems(); // Display cart items on initial load

@@ -1,0 +1,31 @@
+The Same-Origin Policy (SOP) is a critical security mechanism enforced by web browsers to prevent malicious actions such as Cross-Site Request Forgery (CSRF) and data theft. It restricts how documents or scripts loaded from one origin can interact with resources from another origin. In the context of AJAX (Asynchronous JavaScript and XML) requests, the Same-Origin Policy dictates that an AJAX request can only access resources from the same origin as the one that served the web page.
+
+There are several methods to work around the Same-Origin Policy for AJAX requests:
+
+CORS (Cross-Origin Resource Sharing):
+
+CORS is a standard that allows servers to specify who can access their resources and how.
+The server includes specific HTTP headers (e.g., Access-Control-Allow-Origin) in the response to indicate which origins are permitted to access the resource.
+Example header to allow any origin: Access-Control-Allow-Origin: *
+For more restrictive access, it can specify particular origins: Access-Control-Allow-Origin: http://allowed-origin.com
+JSONP (JSON with Padding):
+
+JSONP is a technique for requesting data by inserting a <script> tag with a src attribute pointing to the desired resource.
+The server responds with JavaScript code that is executed in the context of the webpage.
+This method is limited to GET requests and has security risks since it allows for the execution of arbitrary JavaScript code.
+Example: <script src="http://example.com/data?callback=myCallback"></script>
+Proxy Server:
+
+Use a server-side script to act as an intermediary between the client and the target resource.
+The AJAX request is made to the same origin server, which then makes the request to the external resource and relays the response back to the client.
+This bypasses SOP as the browser sees the request as same-origin.
+Example: AJAX request to http://myserver.com/proxy?url=http://external-resource.com
+Server-Side CORS Proxy:
+
+Some services provide CORS proxies that handle cross-origin requests for you.
+Example services: CORS Anywhere, AllOrigins.
+PostMessage API:
+
+Used for communication between documents from different origins.
+Allows scripts on different origins to communicate in a controlled way.
+Example: The parent page and an iframe loaded from a different origin can use window.postMessage to send messages back and forth.

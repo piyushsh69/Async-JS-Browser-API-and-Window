@@ -1,0 +1,20 @@
+JavaScript developers have access to a wide range of Browser APIs (Application Programming Interfaces) that enable interaction with various features and capabilities of the web browser. Here are some of the most commonly used Browser APIs:
+
+1. DOM (Document Object Model) API
+The DOM API allows developers to interact with and manipulate HTML and XML documents. It provides methods and properties to dynamically change the content, structure, and style of web pages.
+
+Example Methods and Properties:
+document.getElementById(id): Selects an element by its ID.
+element.innerHTML: Gets or sets the HTML content inside an element.
+document.createElement(tagName): Creates a new element.
+
+
+2. Fetch API
+The Fetch API is used to make network requests similar to XMLHttpRequest (XHR), but with a more powerful and flexible feature set. It returns Promises, making it easier to work with asynchronous requests.
+
+Example:
+fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+
